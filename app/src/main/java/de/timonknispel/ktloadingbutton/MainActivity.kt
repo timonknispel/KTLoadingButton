@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         test_button.touchListener = {
             Log.d(tag, "button clicked")
         }
-
     }
 
     // test function for generating some data for the button
