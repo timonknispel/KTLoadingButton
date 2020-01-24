@@ -32,9 +32,10 @@ allprojects {
 
 ```css
 dependencies {
-		implementation 'com.github.User:Repo:Tag'
+		implementation 'com.github.timonknispel:KTLoadingButton:XXXX'
 	}
 ```
+Where XXXX need to be replaced by the version showen in the badge above.
 
 ## Usage
 ### Example needed?  Look inside the app folder
