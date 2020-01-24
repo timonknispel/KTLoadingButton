@@ -3,6 +3,9 @@
 Simple loading button for kotlin andorid apps.
 This button can show results in a nicely designed way to not block the ui while the user is waiting.
 
+[![](https://jitpack.io/v/timonknispel/KTLoadingButton.svg)](https://jitpack.io/#timonknispel/KTLoadingButton)
+
+
 |SUCCESS| ERROR |
 |--|--|
 | ![](success.gif) | ![](fail.gif) |
