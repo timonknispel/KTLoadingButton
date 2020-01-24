@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        test_button.setProgress(50F)
         test_button.setOnClickListener {
             initWithLiveData().observe(this, Observer {
                 when (it) {
