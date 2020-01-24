@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="KTLoadingButton">
+        <attr name="buttonName" format="string" />
+        <attr name="buttonColor" format="color" />
+        <attr name="succeedColor" format="color" />
+        <attr name="failedColor" format="color" />
+        <attr name="loadingBackgroundColor" format="color"/>
+        <attr name="buttonTextSize" format="dimension"/>
+        <attr name="autoResetButtonAfterResult" format="boolean"/>
+        <attr name="progressStyle">
+            <enum name="INTERMEDIATE" value="0" />
+            <enum name="PROGRESS" value="1" />
+        </attr>
+        <attr name="allCaps" format="boolean"/>
+    </declare-styleable>
+</resources>
