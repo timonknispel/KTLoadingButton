@@ -5,7 +5,7 @@ This button can show results in a nicely designed way to not block the ui while 
 
 |SUCCESS| ERROR |
 |--|--|
-|  |  |
+| ![](success.gif) | ![](fail.gif) |
 
 
 ## Installation
