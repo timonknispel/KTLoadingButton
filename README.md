@@ -12,9 +12,9 @@ This button can show results in a nicely designed way to not block the ui while 
 <br/>
 [![GitHub license](https://img.shields.io/github/license/timonknispel/KTLoadingButton?logo=t)](https://github.com/timonknispel/KTLoadingButton/blob/master/LICENSE)
 
-|SUCCESS| ERROR |
-|--|--|
-| ![](success.gif) | ![](fail.gif) |
+|SUCCESS| ERROR | PROGRESS |
+|--|--| -- |
+| ![](success.gif) | ![](error.gif) | ![](progress.gif) |
 
 
 ## Installation
