@@ -110,3 +110,4 @@ test_button.reset()
 | failedColor | Color | Sets the background color for a failed result |[]|#F44336 |
 | autoResetButtonAfterResult | Boolean | Decides if the button should reset itself after the result was displayed (after 1,5 seconds) |[]| true |
 | progressStyle | [INTERMEDIATE or PROGRESS] | Decides if the button should intermediate or display a progress |[]| INTERMEDIATE |
+| border_thickness | Dimension (DP) | sets the thickness of the outline border and progress circle |[]| 1dp |
