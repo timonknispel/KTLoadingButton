@@ -8,7 +8,7 @@ This button can show results in a nicely designed way to not block the ui while 
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/timonknispel/KTLoadingButton)
 [![GitHub license](https://img.shields.io/github/license/timonknispel/KTLoadingButton?logo=t)](https://github.com/timonknispel/KTLoadingButton/blob/master/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/timonknispel/KTLoadingButton)](https://github.com/timonknispel/KTLoadingButton/stargazers)
-![JitPack - Downloads](https://img.shields.io/jitpack/dm/github/timonknispel/KTLoadingButton?label=jitpack%20downloads)
+[![](https://jitpack.io/v/timonknispel/KTLoadingButton/month.svg)](https://jitpack.io/#timonknispel/KTLoadingButton)
 
 
 |SUCCESS| ERROR |
