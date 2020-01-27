@@ -13,5 +13,6 @@
             <enum name="PROGRESS" value="1" />
         </attr>
         <attr name="allCaps" format="boolean"/>
+        <attr name="border_thickness" format="dimension"/>
     </declare-styleable>
 </resources>

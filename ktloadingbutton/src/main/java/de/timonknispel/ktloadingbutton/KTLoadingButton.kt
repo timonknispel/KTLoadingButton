@@ -13,6 +13,7 @@ import android.view.animation.AccelerateInterpolator
 import androidx.core.graphics.ColorUtils
 import java.util.*
 import kotlin.math.ceil
+import kotlin.math.sqrt
 
 class KTLoadingButton : View {
 
@@ -29,6 +30,7 @@ class KTLoadingButton : View {
     private var textSize = 0
     private var _loadingBGPaint = 0
     private var progressStyle = ProgressStyle.INTERMEDIATE
+    private var borderThickness = 0F
 
     private var submitAnim: ValueAnimator? = null
     private var loadingAnim: ValueAnimator? = null
@@ -104,14 +106,21 @@ class KTLoadingButton : View {
                 R.styleable.KTLoadingButton_loadingBackgroundColor,
                 -1
             )
-            textSize = typedArray.getDimension(
-                R.styleable.KTLoadingButton_buttonTextSize,
-                sp2px(16f).toFloat()
-            ).toInt()
+            textSize = sp2px(
+                typedArray.getDimension(
+                    R.styleable.KTLoadingButton_buttonTextSize,
+                    16F
+                )
+            )
             shouldAutoResetAfterResult = typedArray.getBoolean(
                 R.styleable.KTLoadingButton_autoResetButtonAfterResult,
                 true
             )
+            borderThickness =
+                typedArray.getDimension(
+                    R.styleable.KTLoadingButton_border_thickness,
+                    1F
+                )
             progressStyle =
                 ProgressStyle.formID(
                     typedArray.getInt(
@@ -121,7 +130,7 @@ class KTLoadingButton : View {
                 )
             typedArray.recycle()
         }
-        this.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+        this.setLayerType(LAYER_TYPE_SOFTWARE, null)
         setup()
     }
 
@@ -129,14 +138,14 @@ class KTLoadingButton : View {
         bgPaint = Paint().apply {
             color = buttonColor
             style = Paint.Style.STROKE
-            strokeWidth = 5f
+            strokeWidth = dp2px(borderThickness)
             isAntiAlias = true
         }
 
         loadingPaint = Paint().apply {
             color = buttonColor
             style = Paint.Style.STROKE
-            strokeWidth = 9f
+            strokeWidth = dp2px(borderThickness)
             isAntiAlias = true
         }
 
@@ -146,21 +155,21 @@ class KTLoadingButton : View {
                 70
             )
             style = Paint.Style.STROKE
-            strokeWidth = 9f
+            strokeWidth = dp2px(borderThickness)
             isAntiAlias = false
         }
 
         resultPaint = Paint().apply {
             color = Color.WHITE
             style = Paint.Style.STROKE
-            strokeWidth = 9f
+            strokeWidth = textSize
             strokeCap = Paint.Cap.ROUND
             isAntiAlias = true
         }
 
         textPaint = Paint().apply {
             color = buttonColor
-            strokeWidth = (this@KTLoadingButton.textSize / 6F)
+            strokeWidth = this@KTLoadingButton.textSize / 6F
             this.textSize = this@KTLoadingButton.textSize.toFloat()
             isAntiAlias = true
         }
@@ -223,25 +232,25 @@ class KTLoadingButton : View {
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val widthMode = View.MeasureSpec.getMode(widthMeasureSpec)
-        var widthSize = View.MeasureSpec.getSize(widthMeasureSpec)
-        val heightMode = View.MeasureSpec.getMode(heightMeasureSpec)
-        var heightSize = View.MeasureSpec.getSize(heightMeasureSpec)
+        val widthMode = MeasureSpec.getMode(widthMeasureSpec)
+        var widthSize = MeasureSpec.getSize(widthMeasureSpec)
+        val heightMode = MeasureSpec.getMode(heightMeasureSpec)
+        var heightSize = MeasureSpec.getSize(heightMeasureSpec)
 
-        if (widthMode == View.MeasureSpec.AT_MOST) {
-            widthSize = textWidth + 100
+        if (widthMode == MeasureSpec.AT_MOST) {
+            widthSize = textWidth + 100 + (dp2px(borderThickness) * 2).toInt()
         }
 
-        if (heightMode == View.MeasureSpec.AT_MOST) {
-            heightSize = (textHeight * 3F).toInt()
+        if (heightMode == MeasureSpec.AT_MOST) {
+            heightSize = (textHeight * 3F).toInt() + (dp2px(borderThickness) * 2).toInt()
         }
 
         if (heightSize > widthSize) {
-            heightSize = (widthSize * 0.25F).toInt()
+            heightSize = (widthSize * 0.25F).toInt() + (dp2px(borderThickness) * 2).toInt()
         }
 
-        mWidth = widthSize - 5
-        mHeight = heightSize - 5
+        mWidth = widthSize - (dp2px(borderThickness) * 2).toInt()
+        mHeight = heightSize - (dp2px(borderThickness) * 2).toInt()
         x = (widthSize * 0.5F).toInt()
         y = (heightSize * 0.5F).toInt()
         maxWidth = mWidth
@@ -317,7 +326,7 @@ class KTLoadingButton : View {
     private fun drawResult(canvas: Canvas, isSucceed: Boolean) {
         if (isSucceed) {
             resultPath.moveTo((-mHeight / 6).toFloat(), 0f)
-            resultPath.lineTo(0f, (-mHeight / 6 + (1 + Math.sqrt(5.0)) * mHeight / 12).toFloat())
+            resultPath.lineTo(0f, (-mHeight / 6 + (1 + sqrt(5.0)) * mHeight / 12).toFloat())
             resultPath.lineTo((mHeight / 6).toFloat(), (-mHeight / 6).toFloat())
         } else {
             resultPath.moveTo((-mHeight / 6).toFloat(), (mHeight / 6).toFloat())
@@ -468,6 +477,11 @@ class KTLoadingButton : View {
     private fun sp2px(sp: Float): Int {
         val fontScale = context.resources.displayMetrics.scaledDensity
         return (sp * fontScale + 0.5f).toInt()
+    }
+
+    private fun dp2px(dp: Float): Float {
+        val dpScale = context.resources.displayMetrics.density
+        return (dp * dpScale)
     }
 
     private fun getTextWidth(paint: Paint, str: String?): Int {
