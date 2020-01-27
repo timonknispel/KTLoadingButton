@@ -156,7 +156,7 @@ class KTLoadingButton : View {
             )
             style = Paint.Style.STROKE
             strokeWidth = dp2px(borderThickness)
-            isAntiAlias = false
+            isAntiAlias = true
         }
 
         resultPaint = Paint().apply {
