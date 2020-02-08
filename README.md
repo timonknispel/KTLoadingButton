@@ -12,7 +12,7 @@ This button can show results in a nicely designed way to not block the ui while 
 <br/>
 [![GitHub license](https://img.shields.io/github/license/timonknispel/KTLoadingButton?logo=t)](https://github.com/timonknispel/KTLoadingButton/blob/master/LICENSE)
 <br/><br/><br/>
-![](https://img.shields.io/badge/NEWS-validation%20function-orange?style=for-the-badge)
+![](https://img.shields.io/badge/NEWS-validation%20function%20|%20new%20example%20app-orange?style=for-the-badge)
 
 |SUCCESS| ERROR | PROGRESS |
 |--|--| -- |
