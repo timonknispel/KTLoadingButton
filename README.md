@@ -11,13 +11,19 @@ This button can show results in a nicely designed way to not block the ui while 
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/timonknispel/KTLoadingButton)
 <br/>
 [![GitHub license](https://img.shields.io/github/license/timonknispel/KTLoadingButton?logo=t)](https://github.com/timonknispel/KTLoadingButton/blob/master/LICENSE)
-<br/><br/><br/>
-![](https://img.shields.io/badge/NEWS-validation%20function%20|%20new%20example%20app-orange?style=for-the-badge)
+<br/><br/>
 
 |SUCCESS| ERROR | PROGRESS |
 |--|--| -- |
 | ![](success.gif) | ![](error.gif) | ![](progress.gif) |
 
+![](https://img.shields.io/badge/NEWS-validation%20function-orange?style=for-the-badge)
+- You can set a validation function if the button should show the loading animation (e.g. if a text field is not filled correctly):
+```kotlin
+test_button.validation = { // call a function for validation }
+```
+![](https://img.shields.io/badge/NEWS-new%20example%20app-orange?style=for-the-badge)
+![](new-example-app.png)
 
 ## Installation
 1. Add the JitPack repository to your build file
