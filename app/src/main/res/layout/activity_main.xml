@@ -6,15 +6,126 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <de.timonknispel.ktloadingbutton.KTLoadingButton
-        android:id="@+id/test_button"
+    <TextView
+        android:id="@+id/normal_loading_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:buttonName="Login"
-        app:progressStyle="PROGRESS"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Normal loading button with result"
+        app:layout_constraintBottom_toTopOf="@id/normal_loading_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/normal_loading_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change loading result        "
+        app:layout_constraintBottom_toTopOf="@id/normal_loading_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/normal_loading_text" />
+
+    <de.timonknispel.ktloadingbutton.KTLoadingButton
+        android:id="@+id/normal_loading_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:buttonName="Normal"
+        app:layout_constraintBottom_toTopOf="@id/progress_loading_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/normal_loading_text" />
+
+    <View
+        app:layout_constraintBottom_toTopOf="@id/progress_loading_text"
+        app:layout_constraintTop_toBottomOf="@id/normal_loading_button"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"
+        />
+
+    <TextView
+        android:id="@+id/progress_loading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Progress loading button"
+        app:layout_constraintBottom_toTopOf="@id/progress_loading_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/normal_loading_button" />
+
+    <TextView
+        android:id="@+id/progress_loading_percentage_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress_loading_text"
+        app:layout_constraintBottom_toTopOf="@id/progress_loading_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Progress: 0%"/>
+
+    <de.timonknispel.ktloadingbutton.KTLoadingButton
+        android:id="@+id/progress_loading_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:buttonName="Progress"
+        app:layout_constraintBottom_toTopOf="@id/normal_validation_loading_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress_loading_text"
+        app:progressStyle="PROGRESS" />
+
+
+    <View
+        app:layout_constraintBottom_toTopOf="@id/normal_validation_loading_text"
+        app:layout_constraintTop_toBottomOf="@id/progress_loading_button"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"
+        />
+
+    <TextView
+        android:id="@+id/normal_validation_loading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Normal loading button with validation before loading"
+        app:layout_constraintBottom_toTopOf="@id/normal_validation_loading_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress_loading_button" />
+
+    <Switch
+        android:id="@+id/normal_validation_loading_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change validation result        "
+        app:layout_constraintBottom_toTopOf="@id/normal_validation_loading_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/normal_validation_loading_text" />
+
+    <de.timonknispel.ktloadingbutton.KTLoadingButton
+        android:id="@+id/normal_validation_loading_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:buttonName="Validation"
+       app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/normal_validation_loading_text" />
+
+    <Button
+        android:id="@+id/reset_normal_validation_loading_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="reset"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

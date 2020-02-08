@@ -7,6 +7,7 @@ import android.content.Context
 import android.graphics.*
 import android.os.Handler
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AccelerateInterpolator
@@ -70,7 +71,8 @@ class KTLoadingButton : View {
     private var resetHandler = Handler()
     private var shouldAutoResetAfterResult: Boolean = true
 
-    var touchListener: (() -> Unit)? = null
+    var touchListener: ((loadingButton: KTLoadingButton) -> Boolean)? = null
+    var validation: (() -> Boolean)? = null
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -193,7 +195,7 @@ class KTLoadingButton : View {
         }
     }
 
-    fun doResult(isSucceed: Boolean, onDone: (() -> Unit)? = null) {
+    fun doResult(isSucceed: Boolean, onDone: ((loadingButton: KTLoadingButton) -> Unit)? = null) {
         if (state == State.NONE || state == State.RESULT || isDoResult) {
             return
         }
@@ -230,6 +232,8 @@ class KTLoadingButton : View {
             invalidate()
         }
     }
+
+    fun isLoading() = state == State.LOADING
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val widthMode = MeasureSpec.getMode(widthMeasureSpec)
@@ -395,7 +399,7 @@ class KTLoadingButton : View {
         loadingAnim?.start()
     }
 
-    private fun startResultAnim(onDone: (() -> Unit)?) {
+    private fun startResultAnim(onDone: ((loadingButton: KTLoadingButton) -> Unit)?) {
         state = State.RESULT
         isDoneWithResult = false
         loadingAnim?.cancel()
@@ -420,7 +424,7 @@ class KTLoadingButton : View {
 
                 override fun onAnimationEnd(animation: Animator) {
                     postDelayed({
-                        onDone?.invoke()
+                        onDone?.invoke(this@KTLoadingButton)
                         isDoneWithResult = true
                     }, 500)
                     if (shouldAutoResetAfterResult) {
@@ -446,9 +450,22 @@ class KTLoadingButton : View {
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_UP -> {
-                touchListener?.invoke()
+                if (touchListener?.invoke(this) == false){
+                    return true
+                }
                 when (state) {
-                    State.NONE -> startSubmitAnim()
+                    State.NONE -> {
+                        if (validation != null) {
+                            if (validation?.invoke() == true) {
+                                startSubmitAnim()
+                            } else {
+                                state = State.LOADING
+                                doResult(false)
+                            }
+                        } else {
+                            startSubmitAnim()
+                        }
+                    }
                     State.RESULT -> if (isDoneWithResult) {
                         resetHandler.removeCallbacksAndMessages(null)
                         reset()
@@ -456,6 +473,7 @@ class KTLoadingButton : View {
                     }
                     else -> return true
                 }
+
             }
         }
         return super.onTouchEvent(event)
