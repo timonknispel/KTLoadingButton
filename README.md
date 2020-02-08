@@ -23,6 +23,7 @@ This button can show results in a nicely designed way to not block the ui while 
 test_button.validation = { // call a function for validation }
 ```
 ![](https://img.shields.io/badge/NEWS-new%20example%20app-orange?style=for-the-badge)
+
 ![](new-example-app.png)
 
 ## Installation
