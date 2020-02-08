@@ -1,6 +1,6 @@
 # KTLoadingButton
 
-Simple loading button for kotlin andorid apps.
+Simple loading button for kotlin android apps.
 This button can show results in a nicely designed way to not block the ui while the user is waiting.
 
 [![](https://jitpack.io/v/timonknispel/KTLoadingButton.svg)](https://jitpack.io/#timonknispel/KTLoadingButton)
@@ -55,6 +55,11 @@ Where XXXX need to be replaced by the version showen in the badge above.
 Now all you have to do is to start the button. This can be done in several ways.
 
 #### Option 1: INTERMEDIATE (DEFAULT)
+Automatically by setting a onClickListener :
+```kotlin
+test_button.setOnClickListener {}
+```
+
 Simply call :
 ```kotlin
 test_button.startLoading()
@@ -66,10 +71,10 @@ When loading is done simply call:
 ```kotlin
 test_button.doResult(success: Boolean)
 ```
-This will stop the loading animation an start the result animation according to the given success.
-Optional you can add a callback if you want to know when the animation is done:
+This will stop the loading animation and start the result animation according to the given success.
+Optional you can add a callback if you want to know when the animation is done. It also returns the LoadingButton itself:
 ```kotlin
-test_button.doResult(success: Boolean) {
+test_button.doResult(success: Boolean) { it: KTLoadingButton -> 
 // do stuff here
 }
 ```
@@ -93,10 +98,11 @@ to show the progress.
 
 ## Good to know
 
- - You can add a callback to the button if you need the click event even if the button is in loading state:
+ - You can add a callback to the button if you need the click event even if the button is in loading state. The return type decides if the click event should be passed to the LoadingButton:
 ```kotlin
 test_button.touchListener = {
 // do some stuff
+return [true|false]
 }
 ```
 This can be handy if for example want the user to cancel the loading process.
@@ -104,6 +110,11 @@ This can be handy if for example want the user to cancel the loading process.
 - You can reset the button by calling:
 ```kotlin
 test_button.reset()
+```
+
+- You can set a validation function if the button should show the loading animation (e.g. if a text field is not filled correctly):
+```kotlin
+test_button.validation = { // call a function for validation }
 ```
 
 ## Customization
