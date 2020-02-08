@@ -3,9 +3,18 @@
 Simple loading button for kotlin andorid apps.
 This button can show results in a nicely designed way to not block the ui while the user is waiting.
 
-|SUCCESS| ERROR |
-|--|--|
-| ![](success.gif) | ![](fail.gif) |
+[![](https://jitpack.io/v/timonknispel/KTLoadingButton.svg)](https://jitpack.io/#timonknispel/KTLoadingButton)
+[![](https://jitpack.io/v/timonknispel/KTLoadingButton/month.svg)](https://jitpack.io/#timonknispel/KTLoadingButton)
+<br/>
+
+[![GitHub issues](https://img.shields.io/github/issues/timonknispel/KTLoadingButton)](https://github.com/timonknispel/KTLoadingButton/issues)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/timonknispel/KTLoadingButton)
+<br/>
+[![GitHub license](https://img.shields.io/github/license/timonknispel/KTLoadingButton?logo=t)](https://github.com/timonknispel/KTLoadingButton/blob/master/LICENSE)
+
+|SUCCESS| ERROR | PROGRESS |
+|--|--| -- |
+| ![](success.gif) | ![](error.gif) | ![](progress.gif) |
 
 
 ## Installation
@@ -24,9 +33,10 @@ allprojects {
 
 ```css
 dependencies {
-		implementation 'com.github.User:Repo:Tag'
+		implementation 'com.github.timonknispel:KTLoadingButton:XXXX'
 	}
 ```
+Where XXXX need to be replaced by the version showen in the badge above.
 
 ## Usage
 ### Example needed?  Look inside the app folder
